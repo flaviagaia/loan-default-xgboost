@@ -133,6 +133,41 @@ O relatório consolidado contém:
 
 Isso permite usar o projeto tanto como benchmark local quanto como bloco de partida para evoluções com serving, monitoramento e explicabilidade mais avançada.
 
+### Resultados atuais
+
+- `dataset_rows = 1800`
+- `positive_rate = 0.2611`
+- `runtime_mode = fallback_without_xgboost`
+
+#### Baseline
+
+- `model = logistic_regression`
+- `roc_auc = 0.8676`
+- `average_precision = 0.7680`
+- `precision = 0.4949`
+- `recall = 0.8376`
+- `f1 = 0.6222`
+
+#### Modelo selecionado no runtime atual
+
+- `model = hist_gradient_boosting_fallback`
+- `roc_auc = 0.9541`
+- `average_precision = 0.9112`
+- `precision = 0.9043`
+- `recall = 0.7265`
+- `f1 = 0.8057`
+
+#### Principais variáveis pelo ranking atual
+
+- `credit_history_length`
+- `employment_consistency`
+- `credit_utilization`
+- `application_velocity`
+- `hard_inquiries`
+- `cash_flow_volatility`
+- `behavior_score`
+- `asset_buffer`
+
 ### Artefato gerado
 
 - `data/processed/loan_default_xgboost_report.json`
@@ -193,3 +228,27 @@ This is why the project is structured around:
   Coverage over the default class.
 - `F1`
   Precision/recall balance.
+
+### Current results
+
+- `dataset_rows = 1800`
+- `positive_rate = 0.2611`
+- `runtime_mode = fallback_without_xgboost`
+
+#### Baseline
+
+- `model = logistic_regression`
+- `roc_auc = 0.8676`
+- `average_precision = 0.7680`
+- `precision = 0.4949`
+- `recall = 0.8376`
+- `f1 = 0.6222`
+
+#### Runtime-selected model
+
+- `model = hist_gradient_boosting_fallback`
+- `roc_auc = 0.9541`
+- `average_precision = 0.9112`
+- `precision = 0.9043`
+- `recall = 0.7265`
+- `f1 = 0.8057`
