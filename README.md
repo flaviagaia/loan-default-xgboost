@@ -4,22 +4,6 @@
 
 `loan-default-xgboost` é um projeto de classificação binária para predição de inadimplência, com `XGBoost` como modelo principal e `Logistic Regression` como baseline comparativo.
 
-### Storytelling técnico: por que XGBoost aqui
-
-Em problemas reais de crédito, o desafio raramente é apenas “prever default”. O problema central é ordenar risco com boa capacidade discriminativa, capturando interações não lineares entre renda, endividamento, utilização, histórico e comportamento recente. É exatamente nesse tipo de dado tabular que `XGBoost` ganhou espaço na prática.
-
-`XGBoost` é uma implementação altamente otimizada de gradient boosting sobre árvores de decisão. Na prática, ele combina vários estimadores fracos em sequência, reduzindo o erro residual a cada nova árvore. Isso o torna especialmente forte quando:
-
-- as relações entre variáveis não são lineares;
-- existem interações difíceis de capturar com modelos lineares;
-- o problema exige bom desempenho em dados tabulares;
-- é importante manter um modelo competitivo sem partir para arquiteturas muito complexas.
-
-Por isso este projeto foi desenhado como um case de risco de crédito em que:
-
-- `Logistic Regression` estabelece um baseline linear interpretável;
-- `XGBoost` entra como modelo principal para capturar mais estrutura no espaço tabular;
-- um fallback com `HistGradientBoostingClassifier` mantém o projeto executável mesmo sem a dependência nativa do `xgboost`.
 
 ### Objetivo técnico
 
@@ -188,22 +172,6 @@ python3 -m py_compile main.py src/data_factory.py src/modeling.py
 
 When `xgboost` is not available in the runtime, the project automatically falls back to `HistGradientBoostingClassifier` so the pipeline remains executable and testable locally.
 
-### Technical storytelling: why XGBoost matters here
-
-In real credit risk problems, the challenge is not only to predict default, but to rank applicants with strong discriminative power while capturing non-linear interactions across income, debt pressure, utilization, and recent behavioral signals.
-
-`XGBoost` is a highly optimized implementation of gradient boosting over decision trees. It is especially effective when:
-
-- relationships across features are not linear;
-- interaction effects matter;
-- tabular performance is critical;
-- a strong baseline is needed without moving to overly complex architectures.
-
-This is why the project is structured around:
-
-- `Logistic Regression` as an interpretable baseline;
-- `XGBoost` as the preferred production-style model;
-- `HistGradientBoostingClassifier` as a reproducible local fallback.
 
 ### Project topology
 
